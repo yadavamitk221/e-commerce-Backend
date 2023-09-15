@@ -17,8 +17,8 @@ exports.fetchAllProduct = async (req, res) => {
     // sort = {_sort: "price"_order="desc"}
     // pagination = {_page:1,_limit=10}   
 
-    let query = Product.find({}); 
-    let totalProductQuery = Product.find({});
+    let query = Product.find({deleted: {$ne:true}}); 
+    let totalProductQuery = Product.find({deleted: {$ne:true}});
 
     if(req.query.category){
         query = query.find({"category": req.query.category});

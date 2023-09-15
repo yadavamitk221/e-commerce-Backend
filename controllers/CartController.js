@@ -37,11 +37,12 @@ exports.deleteFromCart = async (req, res) => {
   };
 
   exports.updateCart = async (req, res) => {
-    const {id} = req.params.id;
-    try {
+    const {id} = req.params;
+   try {
     // here we have passed he option new: true which will return latest copy of updated item
     const cart = await Cart.findByIdAndUpdate(id, req.body, {new: true});
-    res.status(200).json(product);
+    const result = await cart.populate("product");
+    res.status(200).json(result);
 } catch (err) {
     // Handle errors here
     res.status(400).json(err);
