@@ -13,7 +13,6 @@ exports.createCategory = async (req, res) => {
     const category = new Category(req.body);
     try {
         const response = await category.save();
-        console.log(response);
         res.status(201).json(response);
     } catch (err) {
         // Handle errors here

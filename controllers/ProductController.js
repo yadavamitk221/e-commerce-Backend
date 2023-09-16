@@ -4,7 +4,6 @@ exports.createProduct = async (req, res) => {
     const product = new Product(req.body);
     try {
         const response = await product.save();
-        console.log(response);
         res.status(201).json(response);
     } catch (err) {
         // Handle errors here
@@ -16,16 +15,20 @@ exports.fetchAllProduct = async (req, res) => {
     // filter = {"category":"smartphone"}
     // sort = {_sort: "price"_order="desc"}
     // pagination = {_page:1,_limit=10}   
+    let condition ={};
+    if(!req.query.admin){
+        condition.deleted = {$ne:true}
+    }
 
-    let query = Product.find({deleted: {$ne:true}}); 
-    let totalProductQuery = Product.find({deleted: {$ne:true}});
+    let query = Product.find(condition); 
+    let totalProductQuery = Product.find(condition);
 
     if(req.query.category){
         query = query.find({"category": req.query.category});
         totalProductQuery = totalProductQuery.find({"category": req.query.category});
 
     }
-    if(req.query.brand){
+    if(req.query.brand){ 
         query = query.find({"brand": req.query.brand});
         totalProductQuery = totalProductQuery.find({"brand": req.query.brand});
     }

@@ -4,7 +4,6 @@ exports.createUser = async (req, res) => {
   const user = new User(req.body);
   try {
     const response = await user.save();
-    console.log(response);
     res.status(201).json({id:response.id, role:response.role});
   } catch (err) {
     // Handle errors here
@@ -17,7 +16,6 @@ exports.loginUser = async (req, res) => {
     const user = await User.findOne({ email: req.body.email });
     
     if(user.password == req.body.password) {
-      console.log("true");
     }
     if (!user) {
       res.status(401).json({ message: "no such user email" });
