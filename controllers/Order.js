@@ -33,12 +33,10 @@ exports.deleteOrder = async (req, res) => {
 };
 
 exports.updateOrder = async (req, res) => {
-  console.log("order_id", req.params.id)
   const { id } = req.params;
   try {
     // here we have passed he option new: true which will return latest copy of updated item
     const order = await Order.findByIdAndUpdate(id, req.body, { new: true });
-    console.log("updated Order", order);
     res.status(200).json(order);
   } catch (err) {
     // Handle errors here
