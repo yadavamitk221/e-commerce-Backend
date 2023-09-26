@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 // order is already added in base path
 router.post('/', createOrder)
-      .get('/:id', fetchOrderByUser)
+      .get('/own', fetchOrderByUser)
       .delete('/:id', deleteOrder)
       .patch('/:id', updateOrder)
       .get('/', fetchAllOrders)

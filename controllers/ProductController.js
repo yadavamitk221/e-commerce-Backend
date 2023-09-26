@@ -15,9 +15,10 @@ exports.fetchAllProduct = async (req, res) => {
     // filter = {"category":"smartphone"}
     // sort = {_sort: "price"_order="desc"}
     // pagination = {_page:1,_limit=10}   
+    console.log("Product ControllerAPI");
     let condition ={};
     if(!req.query.admin){
-        condition.deleted = {$ne:true}
+        condition.deleted = {$ne:true}  
     }
 
     let query = Product.find(condition); 
