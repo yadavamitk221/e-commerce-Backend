@@ -36,14 +36,17 @@ exports.createUser = async (req, res) => {
 };
 
 exports.loginUser = async (req, res) => {
-  console.log("req.user auth controller",req.user);
-  res.cookie("jwt", req.user.token, {
+    res.cookie("jwt", req.user.token, {
     expires: new Date(Date.now() + 3600000),
     httpOnly: true,
   }).status(201).json(req.user.token);
 };
 
-exports.checkUser = async (req, res) => {
-  res.json(req.user);
+exports.checkAuth = async (req, res) => {
+  if(req.user){
+    res.json(req.user);
+  }else{
+    res.sendStatus(401);
+  }
 };  
 

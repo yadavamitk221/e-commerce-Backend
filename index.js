@@ -46,6 +46,7 @@ server.use(
     saveUninitialized: false, // don't create session until something stored
   })
 );
+server.use(express.raw({type: 'application/json'}))
 server.use(passport.authenticate("session"));
 server.use(express.json());
 
@@ -64,32 +65,31 @@ passport.use(
   new LocalStrategy(
     {usernameField: 'email'},
     async function (email, password, done) {
-    try {
-      const user = await User.findOne({ email: email});
-      if (!user) {
-        done(null, false, { message: "invalid credentials" });
-      }
-      crypto.pbkdf2(
-        password,
-        user.salt, 
-        310000,
-        32,
-        "sha256",
-        async function (err, hashedPassword) {
-          if (crypto.timingSafeEqual(user.password, hashedPassword)) {
-            console.log("login request", user);
-            const token = jwt.sign(sanitizeUser(user), SECRET_KEY);
-            done(null, {token}); //This calls serializer
-          } else {
-            return done(null, false, { message: "Invalid credentials" });
-          }
+      console.log(email, "", password);
+      try {
+        const user = await User.findOne({ email: email });
+        if (!user) {
+          done(null, false, { message: "invalid credentials" });
         }
-      );
-    } catch (err) {
-      // Handle errors here
-      console.log(err);
-      done(err);
-    }
+        crypto.pbkdf2(
+          password,
+          user.salt,
+          310000,
+          32,
+          "sha256",
+          async function (err, hashedPassword) {
+            if (crypto.timingSafeEqual(user.password, hashedPassword)) {
+              const token = jwt.sign(sanitizeUser(user), SECRET_KEY);
+              done(null, { id: user.id, role: user.role, token}); //This calls serializer
+            } else {
+              return done(null, false, { message: "Invalid credentials" });
+            }
+          }
+        );
+      } catch (err) {
+        // Handle errors here
+        done(err);
+      }
   })
 );
 
@@ -123,6 +123,61 @@ passport.deserializeUser(function (user, cb) {
     console.log("index deserializer user", user);
     return cb(null, user);
   });
+});
+
+// Payments
+
+// This is your test secret API key.
+const stripe = require("stripe")('sk_test_51NutNUSBnEWtkPc9BVgEgM0Im8NShIS7wPA8A8BLZY2IWwmYrb5DisWHn3vVudbFxaKbpmSNczMb0lZDExhPqqfM00ev1elw0R');
+
+
+server.post("/create-payment-intent", async (req, res) => {
+  
+  const { totalAmount } = req.body;
+  // Create a PaymentIntent with the order amount and currency
+  const paymentIntent = await stripe.paymentIntents.create({
+    amount: totalAmount*100,
+    currency: "inr",
+    // In the latest version of the API, specifying the `automatic_payment_methods` parameter is optional because Stripe enables its functionality by default.
+    automatic_payment_methods: {
+      enabled: true,
+    },
+  });
+
+  res.send({
+    clientSecret: paymentIntent.client_secret,
+  });
+});
+
+// webhook
+
+const endpointSecret = "whsec_34004b793a27cb9903752e94b81ad94d0a333f20ec0889a2c0997df11afdf574";
+
+server.post('/webhook', express.raw({type: 'application/json'}), (request, response) => {
+  const sig = request.headers['stripe-signature'];
+
+  let event;
+
+  try {
+    event = stripe.webhooks.constructEvent(request.body, sig, endpointSecret);
+  } catch (err) {
+    response.status(400).send(`Webhook Error: ${err.message}`);
+    return;
+  }
+
+  // Handle the event
+  switch (event.type) {
+    case 'payment_intent.succeeded':
+      const paymentIntentSucceeded = event.data.object;
+      // Then define and call a function to handle the event payment_intent.succeeded
+      break;
+    // ... handle other event types
+    default:
+      console.log(`Unhandled event type ${event.type}`);
+  }
+
+  // Return a 200 response to acknowledge receipt of the event
+  response.send();
 });
 
 server.listen(8080, () => {
