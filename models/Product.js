@@ -17,7 +17,7 @@ const productSchema = new Schema({
 
 // This will tell that server need to return _id as id 
 // virtuals is use to set fields in document
-const virtual = productSchema.virtual('id');
+const virtual = productSchema.virtual('id');  
 virtual.get(function(){
     return this._id;
 })
