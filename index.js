@@ -25,6 +25,12 @@ const orderRouter = require("./routers/Order");
 const { isAuth, sanitizeUser, cookieExtractor } = require("./services/common");
 const path = require('path');
 
+
+server.get('*', (req, res) =>
+  res.sendFile(path.resolve('build', 'index.html'))
+);
+
+
 // webhook
 
 server.post(
@@ -86,6 +92,10 @@ server.use("/auth", authRouter.router);
 server.use("/cart", isAuth(), cartRouter.router);
 server.use("/orders", isAuth(), orderRouter.router);
  
+
+
+
+
 // Passport Strategies
 passport.use(
   "local",
