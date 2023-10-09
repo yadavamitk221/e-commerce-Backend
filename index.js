@@ -26,11 +26,6 @@ const { isAuth, sanitizeUser, cookieExtractor } = require("./services/common");
 const path = require('path');
 
 
-server.get('*', (req, res) =>
-  res.sendFile(path.resolve('build', 'index.html'))
-);
-
-
 // webhook
 
 server.post(
