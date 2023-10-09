@@ -73,11 +73,11 @@
     },
     { 
       "src": "/webhook", 
-      "dest": "index.js" 
+      "dest": "server.js" 
     }, 
     { 
       "src": "/create-payment-intent", 
-      "dest": "index.js" 
+      "dest": "server.js" 
     }, 
     
     { 
