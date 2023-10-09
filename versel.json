@@ -12,6 +12,10 @@
 
   "routes": [
     { 
+      "src": "/", 
+      "dest": "build/index.html" 
+    }, 
+    { 
       "src": "/products", 
       "dest": "index.js" 
     }, 
@@ -75,10 +79,7 @@
       "src": "/create-payment-intent", 
       "dest": "index.js" 
     }, 
-    { 
-      "src": "/", 
-      "dest": "build/index.html" 
-    }, 
+    
     { 
       "src": "/(.+)", 
       "dest": "build/$1" 
