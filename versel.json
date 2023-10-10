@@ -77,7 +77,7 @@
     },
     {
       "src": "/",
-      "dest": "build/server.html"
+      "dest": "build/index.html"
     },
     {
       "src": "/(.+)",
