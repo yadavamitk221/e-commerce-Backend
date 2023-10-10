@@ -2,7 +2,7 @@
 {
   "builds": [
     {
-      "src": "index.js",
+      "src": "server.js",
       "use": "@vercel/node"
     },
     {
@@ -13,71 +13,71 @@
   "routes": [
     {
       "src": "/products",
-      "dest": "index.js"
+      "dest": "server.js"
     },
     {
       "src": "/products/(.*)",
-      "dest": "index.js"
+      "dest": "server.js"
     },
     {
       "src": "/categories",
-      "dest": "index.js"
+      "dest": "server.js"
     },
     {
       "src": "/categories/(.*)",
-      "dest": "index.js"
+      "dest": "server.js"
     },
     {
       "src": "/brands",
-      "dest": "index.js"
+      "dest": "server.js"
     },
     {
       "src": "/brands/(.*)",
-      "dest": "index.js"
+      "dest": "server.js"
     },
     {
       "src": "/users",
-      "dest": "index.js"
+      "dest": "server.js"
     },
     {
       "src": "/users/(.*)",
-      "dest": "index.js"
+      "dest": "server.js"
     },
     {
       "src": "/auth",
-      "dest": "index.js"
+      "dest": "server.js"
     },
     {
       "src": "/auth/(.*)",
-      "dest": "index.js"
+      "dest": "server.js"
     },
     {
       "src": "/cart",
-      "dest": "index.js"
+      "dest": "server.js"
     },
     {
       "src": "/cart/(.*)",
-      "dest": "index.js"
+      "dest": "server.js"
     },
     {
       "src": "/orders",
-      "dest": "index.js"
+      "dest": "server.js"
     },
     {
       "src": "/orders/(.*)",
-      "dest": "index.js"
+      "dest": "server.js"
     },
     {
       "src": "/webhook",
-      "dest": "index.js"
+      "dest": "server.js"
     },
     {
       "src": "/create-payment-intent",
-      "dest": "index.js"
+      "dest": "server.js"
     },
     {
       "src": "/",
-      "dest": "build/index.html"
+      "dest": "build/server.html"
     },
     {
       "src": "/(.+)",
