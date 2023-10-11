@@ -15,7 +15,7 @@
       "dest": "server.js"
     },
     {
-      "src": "/products/(.*)",
+      "src": "/products/.*",
       "dest": "server.js"
     },
     {
@@ -23,7 +23,7 @@
       "dest": "server.js"
     },
     {
-      "src": "/categories/(.*)",
+      "src": "/categories/.*",
       "dest": "server.js"
     },
     {
@@ -31,7 +31,7 @@
       "dest": "server.js"
     },
     {
-      "src": "/brands/(.*)",
+      "src": "/brands/.*",
       "dest": "server.js"
     },
     {
@@ -39,7 +39,11 @@
       "dest": "server.js"
     },
     {
-      "src": "/users/(.*)",
+      "src": "/users/.*",
+      "dest": "server.js"
+    },
+    {
+      "src": "/auth",
       "dest": "server.js"
     },
     {
@@ -47,15 +51,11 @@
       "dest": "server.js"
     },
     {
-      "src": "/auth/(.*)",
-      "dest": "server.js"
-    },
-    {
       "src": "/cart",
       "dest": "server.js"
     },
     {
-      "src": "/cart/(.*)",
+      "src": "/cart/.*",
       "dest": "server.js"
     },
     {
@@ -63,7 +63,7 @@
       "dest": "server.js"
     },
     {
-      "src": "/orders/(.*)",
+      "src": "/orders/.*",
       "dest": "server.js"
     },
     {
