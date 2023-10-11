@@ -43,7 +43,7 @@
       "dest": "server.js"
     },
     {
-      "src": "/auth",
+      "src": "/auth/.*",
       "dest": "server.js"
     },
     {
