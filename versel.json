@@ -11,139 +11,15 @@
   ],
   "routes": [
     {
-      "src": "/auth/signup",
+      "src": "/api/auth/signup",
       "dest": "server.js"
     },
     {
-      "src": "/auth/login",
+      "src": "/api/auth/login",
       "dest": "server.js"
     },
     {
-      "src": "/auth/check",
-      "dest": "server.js"
-    },
-    {
-      "src": "/products",
-      "dest": "server.js"
-    },
-    {
-      "src": "/products/(.*)",
-      "dest": "server.js"
-    },
-    {
-      "src": "/categories",
-      "dest": "server.js"
-    },
-    {
-      "src": "/categories/(.*)",
-      "dest": "server.js"
-    },
-    {
-      "src": "/brands",
-      "dest": "server.js"
-    },
-    {
-      "src": "/brands/(.*)",
-      "dest": "server.js"
-    },
-    {
-      "src": "/users",
-      "dest": "server.js"
-    },
-    {
-      "src": "/users/(.*)",
-      "dest": "server.js"
-    },
-    {
-      "src": "/auth",
-      "dest": "server.js"
-    },
-    {
-      "src": "/auth/(.*)",
-      "dest": "server.js"
-    },
-    {
-      "src": "/cart",
-      "dest": "server.js"
-    },
-    {
-      "src": "/cart/(.*)",
-      "dest": "server.js"
-    },
-    {
-      "src": "/orders",
-      "dest": "server.js"
-    },
-    {
-      "src": "/orders/(.*)",
-      "dest": "server.js"
-    },
-    {
-      "src": "/webhook",
-      "dest": "server.js"
-    },
-    {
-      "src": "/create-payment-intent",
-      "dest": "server.js"
-    },
-    {
-      "src": "/mern-ecommerce-five-steel.vercel.app/products",
-      "dest": "server.js"
-    },
-    {
-      "src": "/mern-ecommerce-five-steel.vercel.app/products/.*",
-      "dest": "server.js"
-    },
-    {
-      "src": "/mern-ecommerce-five-steel.vercel.app/categories",
-      "dest": "server.js"
-    },
-    {
-      "src": "/mern-ecommerce-five-steel.vercel.app/categories/.*",
-      "dest": "server.js"
-    },
-    {
-      "src": "/mern-ecommerce-five-steel.vercel.app/brands",
-      "dest": "server.js"
-    },
-    {
-      "src": "/mern-ecommerce-five-steel.vercel.app/brands/.*",
-      "dest": "server.js"
-    },
-    {
-      "src": "/mern-ecommerce-five-steel.vercel.app/users",
-      "dest": "server.js"
-    },
-    {
-      "src": "/mern-ecommerce-five-steel.vercel.app/users/.*",
-      "dest": "server.js"
-    },
-    {
-      "src": "/mern-ecommerce-five-steel.vercel.app/auth/login",
-      "dest": "server.js"
-    },
-    {
-      "src": "/mern-ecommerce-five-steel.vercel.app/cart",
-      "dest": "server.js"
-    },
-    {
-      "src": "/mern-ecommerce-five-steel.vercel.app/cart/.*",
-      "dest": "server.js"
-    },
-    {
-      "src": "/mern-ecommerce-five-steel.vercel.app/orders",
-      "dest": "server.js"
-    },
-    {
-      "src": "/mern-ecommerce-five-steel.vercel.app/orders/.*",
-      "dest": "server.js"
-    },
-    {
-      "src": "/mern-ecommerce-five-steel.vercel.app/webhook",
-      "dest": "server.js"
-    },
-    {
-      "src": "/mern-ecommerce-five-steel.vercel.app/create-payment-intent",
+      "src": "/api/auth/check",
       "dest": "server.js"
     },
     {
