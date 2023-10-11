@@ -11,63 +11,63 @@
   ],
   "routes": [
     {
-      "src": "/products",
+      "src": "/mern-ecommerce-five-steel.vercel.app/products",
       "dest": "server.js"
     },
     {
-      "src": "/products/.*",
+      "src": "/mern-ecommerce-five-steel.vercel.app/products/.*",
       "dest": "server.js"
     },
     {
-      "src": "/categories",
+      "src": "/mern-ecommerce-five-steel.vercel.app/categories",
       "dest": "server.js"
     },
     {
-      "src": "/categories/.*",
+      "src": "/mern-ecommerce-five-steel.vercel.app/categories/.*",
       "dest": "server.js"
     },
     {
-      "src": "/brands",
+      "src": "/mern-ecommerce-five-steel.vercel.app/brands",
       "dest": "server.js"
     },
     {
-      "src": "/brands/.*",
+      "src": "/mern-ecommerce-five-steel.vercel.app/brands/.*",
       "dest": "server.js"
     },
     {
-      "src": "/users",
+      "src": "/mern-ecommerce-five-steel.vercel.app/users",
       "dest": "server.js"
     },
     {
-      "src": "/users/.*",
+      "src": "/mern-ecommerce-five-steel.vercel.app/users/.*",
       "dest": "server.js"
     },
     {
-      "src": "/auth/login",
+      "src": "/mern-ecommerce-five-steel.vercel.app/auth/login",
       "dest": "server.js"
     },
     {
-      "src": "/cart",
+      "src": "/mern-ecommerce-five-steel.vercel.app/cart",
       "dest": "server.js"
     },
     {
-      "src": "/cart/.*",
+      "src": "/mern-ecommerce-five-steel.vercel.app/cart/.*",
       "dest": "server.js"
     },
     {
-      "src": "/orders",
+      "src": "/mern-ecommerce-five-steel.vercel.app/orders",
       "dest": "server.js"
     },
     {
-      "src": "/orders/.*",
+      "src": "/mern-ecommerce-five-steel.vercel.app/orders/.*",
       "dest": "server.js"
     },
     {
-      "src": "/webhook",
+      "src": "/mern-ecommerce-five-steel.vercel.app/webhook",
       "dest": "server.js"
     },
     {
-      "src": "/create-payment-intent",
+      "src": "/mern-ecommerce-five-steel.vercel.app/create-payment-intent",
       "dest": "server.js"
     },
     {
