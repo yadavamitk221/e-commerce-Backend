@@ -11,15 +11,15 @@
   ],
   "routes": [
     {
-      "src": "/api/auth/signup",
+      "src": "/auth/signup",
       "dest": "server.js"
     },
     {
-      "src": "/api/auth/login",
+      "src": "/auth/login",
       "dest": "server.js"
     },
     {
-      "src": "/api/auth/check",
+      "src": "/auth/check",
       "dest": "server.js"
     },
     {
