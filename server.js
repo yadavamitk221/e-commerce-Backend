@@ -43,7 +43,7 @@ server.post(
       return;
     }
 
-    // Handle the event
+    // Handle the eventawbwbd
     switch (event.type) {
       case "payment_intent.succeeded":
         const paymentIntentSucceeded = event.data.object;
