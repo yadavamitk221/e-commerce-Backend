@@ -78,7 +78,10 @@ server.use(
 ); 
 server.use(express.json());
 server.use(passport.authenticate("session"));
-server.use(cors({ exposedHeaders: ["X-Total-Count"] }));
+server.use(cors({
+  origin: 'https://example.com',  // Only allow requests from this origin
+  methods: 'GET,POST',   
+  exposedHeaders: ["X-Total-Count"] }));
 server.use("/products", isAuth(), productsRouters.router);
 server.use("/categories", isAuth(), categoriesRouter.router);
 server.use("/brands", isAuth(), brandsRouter.router);
