@@ -1,7 +1,7 @@
 {
   "builds": [
     {
-      "src": "server.js",
+      "src": "index.js",
       "use": "@vercel/node"
     },
     {
@@ -9,26 +9,6 @@
       "use": "@vercel/static"
     }
   ],
-  "routes": [
-    {
-      "src": "/auth/signup",
-      "dest": "server.js"
-    },
-    {
-      "src": "/auth/login",
-      "dest": "server.js"
-    },
-    {
-      "src": "/auth/check",
-      "dest": "server.js"
-    },
-    {
-      "src": "/",
-      "dest": "build/index.html"
-    },
-    {
-      "src": "/(.+)",
-      "dest": "build/$1"
-    }
-  ]
+
+  "rewrites": [{ "source": "/(.*)", "destination": "index.js" }]
 }
