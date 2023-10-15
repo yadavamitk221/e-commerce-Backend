@@ -19,11 +19,12 @@ const productsRouters = require("./routers/Products");
 const brandsRouter = require("./routers/Brands");
 const categoriesRouter = require("./routers/Categories");
 const userRouter = require("./routers/User");
-const authRouter = require("./routers/Auth");
+const authRouter = require("./routers/Auth"); 
 const cartRouter = require("./routers/Cart");
 const orderRouter = require("./routers/Order");
 const { isAuth, sanitizeUser, cookieExtractor } = require("./services/common");
 const path = require('path');
+
 
 // webhook
 
@@ -42,7 +43,7 @@ server.post(
       return;
     }
 
-    // Handle the event
+    // Handle the eventawbwbd
     switch (event.type) {
       case "payment_intent.succeeded":
         const paymentIntentSucceeded = event.data.object;
@@ -77,7 +78,10 @@ server.use(
 ); 
 server.use(express.json());
 server.use(passport.authenticate("session"));
-server.use(cors({ exposedHeaders: ["X-Total-Count"] }));
+server.use(cors({
+  origin: 'https://example.com',  // Only allow requests from this origin
+  methods: 'GET,POST',   
+  exposedHeaders: ["X-Total-Count"] }));
 server.use("/products", isAuth(), productsRouters.router);
 server.use("/categories", isAuth(), categoriesRouter.router);
 server.use("/brands", isAuth(), brandsRouter.router);
@@ -86,6 +90,10 @@ server.use("/auth", authRouter.router);
 server.use("/cart", isAuth(), cartRouter.router);
 server.use("/orders", isAuth(), orderRouter.router);
  
+
+
+
+
 // Passport Strategies
 passport.use(
   "local",
