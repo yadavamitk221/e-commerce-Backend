@@ -1,4 +1,3 @@
-require('dotenv').config();
 const { User } = require("../models/User");
 const crypto = require("crypto");
 const { sanitizeUser } = require("../services/common");
