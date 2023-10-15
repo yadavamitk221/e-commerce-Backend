@@ -78,10 +78,12 @@ server.use(
 ); 
 server.use(express.json());
 server.use(passport.authenticate("session"));
-server.use(cors({
-  origin: 'https://example.com',  // Only allow requests from this origin
-  methods: 'GET,POST',   
+server.use(cors({ 
   exposedHeaders: ["X-Total-Count"] }));
+  
+  app.get('/', (req, res) => {
+    res.send('Home Page');
+  });  
 server.use("/products", isAuth(), productsRouters.router);
 server.use("/categories", isAuth(), categoriesRouter.router);
 server.use("/brands", isAuth(), brandsRouter.router);
@@ -90,10 +92,6 @@ server.use("/auth", authRouter.router);
 server.use("/cart", isAuth(), cartRouter.router);
 server.use("/orders", isAuth(), orderRouter.router);
  
-
-
-
-
 // Passport Strategies
 passport.use(
   "local",
