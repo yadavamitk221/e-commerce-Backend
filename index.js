@@ -80,7 +80,7 @@ server.use(passport.authenticate("session"));
 server.use(cors({ 
   exposedHeaders: ["X-Total-Count"] }));
   
-  app.get('/', (req, res) => {
+server.get('/', (req, res) => {
     res.send('Home Page');
   });  
 server.use("/products", isAuth(), productsRouters.router);
