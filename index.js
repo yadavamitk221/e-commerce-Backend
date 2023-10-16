@@ -23,15 +23,24 @@ const cartRouter = require("./routers/Cart");
 const orderRouter = require("./routers/Order");
 const { isAuth, sanitizeUser, cookieExtractor } = require("./services/common");
 const path = require('path');
-
-const a = "amit";
-// webhook
+server.use(cors());
 
 server.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
-  res.header('Access-Control-Allow-Credentials', 'true');
-  next();
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Content-Type, Accept, Authorization"
+  );
+  res.header("Access-Control-Allow-Methods", "PUT, POST, PATCH, DELETE, GET");
+  res.header("Access-Control-Max-Age", "10");
+  res.header("Access-Control-Allow-Credentials", true);
+
+  if (req.method === "OPTIONS") {
+    return res.status(200).end();
+  }
+  return next();
 });
+// webhook
 
 server.post(
   "/webhook",
@@ -83,8 +92,7 @@ server.use(
 ); 
 server.use(express.json());
 server.use(passport.authenticate("session"));
-server.use(cors({ 
-  exposedHeaders: ["X-Total-Count"] }));
+
   
 server.get('/', (req, res) => {
     res.send('Home Page');
