@@ -84,8 +84,12 @@ server.use(
 ); 
 server.use(express.json());
 server.use(passport.authenticate("session"));
-server.use(cors({ 
-  exposedHeaders: ["X-Total-Count"] }));
+server.use(
+  cors({
+    origin: ["http://localhost:3000"],
+    exposedHeaders: ["X-Total-Count"],
+  })
+);
   
   app.get('/', (req, res) => {
     res.send('Home Page');
